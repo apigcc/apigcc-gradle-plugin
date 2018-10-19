@@ -1,17 +1,26 @@
+buildscript {
+    repositories {
+        maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
+    }
+    dependencies {
+        classpath 'com.novoda:bintray-release:0.8.1'
+    }
+}
+
 group 'com.github.apiggs'
 version '1.0'
 
 apply plugin: 'java'
 apply plugin: 'java-gradle-plugin'
-apply plugin: 'maven-publish'
+apply plugin: 'com.novoda.bintray-release'
 
 sourceCompatibility = 1.8
 
 [compileJava,compileTestJava,javadoc]*.options*.encoding = 'UTF-8'
 
 repositories {
-    mavenLocal()
     maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
+    maven { url 'https://dl.bintray.com/apiggs/maven'}
     mavenCentral()
 }
 
@@ -21,14 +30,6 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java
-        }
-    }
-}
-
 gradlePlugin {
     plugins {
         ApiggsPlugin {
@@ -36,4 +37,16 @@ gradlePlugin {
             implementationClass = 'com.github.apiggs.ApiggsPlugin'
         }
     }
+}
+
+publish {
+    userOrg = 'apiggs'
+    groupId = group
+    artifactId = name
+    publishVersion = version
+    desc = 'easy use apiggs with gradle.'
+    website = 'https://github.com/apiggs/apiggs-gradle-plugin'
+    bintrayUser = BINTRAYUSER
+    bintrayKey = BINTRAYKEY
+    dryRun = false
 }
