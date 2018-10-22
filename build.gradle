@@ -46,7 +46,7 @@ publish {
     publishVersion = version
     desc = 'easy use apiggs with gradle.'
     website = 'https://github.com/apiggs/apiggs-gradle-plugin'
-    bintrayUser = BINTRAYUSER
-    bintrayKey = BINTRAYKEY
+//    bintrayUser = BINTRAYUSER
+//    bintrayKey = BINTRAYKEY
     dryRun = false
 }
