@@ -23,6 +23,7 @@ public class ApiggsTask extends DefaultTask {
     String dependency;
     String jar;
     String ignore;
+    String version;
 
     @TaskAction
     public void action() {
@@ -57,9 +58,9 @@ public class ApiggsTask extends DefaultTask {
             }
         }
         if (id != null) {
-            env.project(id);
+            env.id(id);
         } else {
-            env.project(project.getName());
+            env.id(project.getName());
         }
         if (out != null) {
             Path path = resolve(out);
@@ -74,6 +75,13 @@ public class ApiggsTask extends DefaultTask {
         }
         if (description != null) {
             env.description(description);
+        } else if(project.getDescription()!=null){
+            env.description(project.getDescription());
+        }
+        if (version != null){
+            env.version(version);
+        } else if (project.getVersion()!=null){
+            env.version(project.getVersion().toString());
         }
         if (ignore != null) {
             env.ignore(ignore.split(","));
