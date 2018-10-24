@@ -1,4 +1,6 @@
 # apiggs-gradle-plugin
+[ ![Download](https://api.bintray.com/packages/apiggs/maven/apiggs-gradle-plugin/images/download.svg) ](https://bintray.com/apiggs/maven/apiggs-gradle-plugin/_latestVersion)
+
 easy use apiggs with gradle
 
 ## Usage
@@ -6,7 +8,7 @@ install build.gradle
 ```groovy
 buildscript {
     dependencies {
-        classpath 'com.github.apiggs:apiggs-gradle-plugin:1.0'
+        classpath 'com.github.apiggs:apiggs-gradle-plugin:1.1'
     }
 }
 
