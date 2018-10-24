@@ -52,6 +52,11 @@ public class ApiggsTask extends DefaultTask {
                 env.dependency(path);
                 System.out.println("dependency " + path);
             }
+        } else {
+            project.getRootProject().getAllprojects().forEach(p->{
+                Path src = p.getProjectDir().toPath().resolve(Environment.DEFAULT_SOURCE_STRUCTURE);
+                env.dependency(src);
+            });
         }
         if (jar != null) {
             for (String dir : jar.split(",")) {
