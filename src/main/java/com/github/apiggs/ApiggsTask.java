@@ -100,8 +100,6 @@ public class ApiggsTask extends DefaultTask {
 
         new Apiggs(env).lookup().build();
 
-        System.out.println("\r\n\n" + Environment.NAME + " build on " + env.getOut());
-
     }
 
     private Path resolve(String dir) {
