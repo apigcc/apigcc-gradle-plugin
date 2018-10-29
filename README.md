@@ -8,7 +8,7 @@ install build.gradle
 ```groovy
 buildscript {
     dependencies {
-        classpath 'com.github.apiggs:apiggs-gradle-plugin:1.1'
+        classpath 'com.github.apiggs:apiggs-gradle-plugin:latest.release'
     }
 }
 
