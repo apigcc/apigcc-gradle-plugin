@@ -8,7 +8,7 @@ install build.gradle
 ```groovy
 buildscript {
     dependencies {
-        classpath 'com.github.apiggs:apiggs-gradle-plugin:latest.release'
+        classpath 'com.github.apiggs:apiggs-gradle-plugin:替换为上方版本号'
     }
 }
 
