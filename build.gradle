@@ -1,5 +1,5 @@
 group 'com.github.apiggs'
-version '1.4'
+version '1.5'
 
 ext {
     DESCRIPTION = 'easy use apiggs with gradle.'
@@ -34,6 +34,7 @@ sourceCompatibility = 1.8
 [compileJava,compileTestJava,javadoc]*.options*.encoding = 'UTF-8'
 
 repositories {
+    mavenLocal()
     maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
     mavenCentral()
 }
