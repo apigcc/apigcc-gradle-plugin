@@ -26,6 +26,7 @@ public class ApiggsTask extends DefaultTask {
     String jar;
     String ignore;
     String version;
+    String css;
 
     @TaskAction
     public void action() {
@@ -96,6 +97,9 @@ public class ApiggsTask extends DefaultTask {
         }
         if (ignore != null) {
             env.ignore(ignore.split(","));
+        }
+        if (css != null) {
+            env.css(css);
         }
 
         new Apiggs(env).lookup().build();
