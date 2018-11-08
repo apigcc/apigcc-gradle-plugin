@@ -1,5 +1,5 @@
 group 'com.github.apiggs'
-version '1.6-SNAPSHOT'
+version '1.6'
 
 ext {
     DESCRIPTION = 'easy use apiggs with gradle.'
@@ -67,9 +67,7 @@ publish {
 }
 
 gradle.taskGraph.whenReady { taskGraph ->
-    taskGraph.getAllTasks().find {
-        it.path == ":generatePomFileForMavenPublication"
-    }.doLast {
+    taskGraph.getAllTasks().find { it.path == ":generatePomFileForMavenPublication" }?.doLast {
         file("build/publications/maven/pom-default.xml").delete()
         println 'Overriding pom-file to make sure we can sync to maven central!'
         pom {
