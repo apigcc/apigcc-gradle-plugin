@@ -1,10 +1,10 @@
-group 'com.github.apiggs'
+group 'com.apigcc'
 version '1.6'
 
 ext {
-    DESCRIPTION = 'easy use apiggs with gradle.'
-    SITE_URL = 'https://github.com/apiggs/apiggs-gradle-plugin'
-    GIT_URL = 'https://github.com/apiggs/apiggs-gradle-plugin.git'
+    DESCRIPTION = 'easy use apigcc with gradle.'
+    SITE_URL = 'https://github.com/apigcc/apigcc-gradle-plugin'
+    GIT_URL = 'https://github.com/apigcc/apigcc-gradle-plugin.git'
 
     LICENSE = 'MIT License'
 
@@ -40,7 +40,7 @@ repositories {
 }
 
 dependencies {
-    compile group:'com.github.apiggs', name:'apiggs', version: version
+    compile group:'com.apigcc', name:'apigcc', version: version
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
@@ -48,8 +48,8 @@ dependencies {
 gradlePlugin {
     plugins {
         ApiggsPlugin {
-            id = 'com.github.apiggs'
-            implementationClass = 'com.github.apiggs.ApiggsPlugin'
+            id = 'com.apigcc'
+            implementationClass = 'com.apigcc.ApigccPlugin'
         }
     }
 }
@@ -61,8 +61,8 @@ publish {
     publishVersion = version
     desc = project.DESCRIPTION
     website = project.SITE_URL
-//    bintrayUser = BINTRAYUSER
-//    bintrayKey = BINTRAYKEY
+    bintrayUser = BINTRAYUSER
+    bintrayKey = BINTRAYKEY
     dryRun = false
 }
 

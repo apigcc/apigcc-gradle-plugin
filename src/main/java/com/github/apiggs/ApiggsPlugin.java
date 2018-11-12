@@ -1,5 +1,6 @@
 package com.github.apiggs;
 
+import com.apigcc.Context;
 import org.gradle.api.Plugin;
 import org.gradle.api.Project;
 
@@ -10,7 +11,7 @@ public class ApiggsPlugin implements Plugin<Project> {
     @Override
     public void apply(Project project) {
         Map<String, Object> attrs = new HashMap<>();
-        attrs.put("name", Environment.NAME);
+        attrs.put("name", Context.NAME);
         attrs.put("type", ApiggsTask.class);
         attrs.put("group", "Documentation");
         project.getTasks().create(attrs);

@@ -1,17 +1,18 @@
 package com.github.apiggs;
 
+import com.apigcc.Apigcc;
+import com.apigcc.Options;
 import org.gradle.api.DefaultTask;
 import org.gradle.api.Project;
 import org.gradle.api.tasks.TaskAction;
 
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
  * Gradle构建配置类
  * 配置项参考
- * {@link Environment}
+ * {@link com.apigcc.Options}
  */
 public class ApiggsTask extends DefaultTask {
 
@@ -33,7 +34,7 @@ public class ApiggsTask extends DefaultTask {
 
         Project project = getProject();
 
-        Environment env = new Environment();
+        Options env = new Options();
         if (source != null) {
             for (String dir : source.split(",")) {
                 Path path = resolve(dir);
@@ -42,7 +43,7 @@ public class ApiggsTask extends DefaultTask {
             }
         } else {
             project.getAllprojects().forEach(p -> {
-                Path src = p.getProjectDir().toPath().resolve(Environment.DEFAULT_SOURCE_STRUCTURE);
+                Path src = p.getProjectDir().toPath().resolve(Options.DEFAULT_SOURCE_STRUCTURE);
                 env.source(src);
             });
         }
@@ -55,7 +56,7 @@ public class ApiggsTask extends DefaultTask {
             }
         } else {
             project.getRootProject().getAllprojects().forEach(p->{
-                Path src = p.getProjectDir().toPath().resolve(Environment.DEFAULT_SOURCE_STRUCTURE);
+                Path src = p.getProjectDir().toPath().resolve(Options.DEFAULT_SOURCE_STRUCTURE);
                 env.dependency(src);
             });
         }
@@ -102,7 +103,7 @@ public class ApiggsTask extends DefaultTask {
             env.css(css);
         }
 
-        new Apiggs(env).lookup().build();
+        new Apigcc(env).lookup().build();
 
     }
 

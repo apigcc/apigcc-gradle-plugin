@@ -1,7 +1,7 @@
 # apiggs-gradle-plugin
 [ ![Download](https://api.bintray.com/packages/apiggs/maven/apiggs-gradle-plugin/images/download.svg) ](https://bintray.com/apiggs/maven/apiggs-gradle-plugin/_latestVersion)
 
-easy use apiggs with gradle
+easy use apigcc with gradle
 
 ## Usage
 install build.gradle
