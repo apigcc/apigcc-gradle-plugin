@@ -1,7 +1,7 @@
 package com.github.apiggs;
 
-import com.apigcc.Apigcc;
-import com.apigcc.Options;
+import com.apigcc.core.Apigcc;
+import com.apigcc.core.Options;
 import org.gradle.api.DefaultTask;
 import org.gradle.api.Project;
 import org.gradle.api.tasks.TaskAction;
@@ -12,7 +12,7 @@ import java.nio.file.Paths;
 /**
  * Gradle构建配置类
  * 配置项参考
- * {@link com.apigcc.Options}
+ * {@link Options}
  */
 public class ApiggsTask extends DefaultTask {
 

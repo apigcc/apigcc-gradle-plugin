@@ -1,33 +1,11 @@
+plugins {
+    id "com.gradle.plugin-publish" version "0.10.0"
+    id "java-gradle-plugin"
+    id "java"
+}
+
 group 'com.apigcc'
 version '1.6'
-
-ext {
-    DESCRIPTION = 'easy use apigcc with gradle.'
-    SITE_URL = 'https://github.com/apigcc/apigcc-gradle-plugin'
-    GIT_URL = 'https://github.com/apigcc/apigcc-gradle-plugin.git'
-
-    LICENSE = 'MIT License'
-
-    DEVELOPER_ID = 'ayz6uem'
-    DEVELOPER_NAME = 'ayz6uem'
-    DEVELOPER_EMAIL = '360188606@qq.com'
-
-    IS_UPLOADING = project.getGradle().startParameter.taskNames.any{it.contains('bintrayUpload')}
-}
-
-buildscript {
-    repositories {
-        maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
-    }
-    dependencies {
-        classpath 'com.novoda:bintray-release:0.8.1'
-    }
-}
-
-apply plugin: 'java'
-apply plugin: 'java-gradle-plugin'
-apply plugin: 'com.novoda.bintray-release'
-apply plugin: 'maven'
 
 sourceCompatibility = 1.8
 
@@ -36,70 +14,32 @@ sourceCompatibility = 1.8
 repositories {
     mavenLocal()
     maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
-    mavenCentral()
 }
 
 dependencies {
-    compile group:'com.apigcc', name:'apigcc', version: version
+    compile group:'com.apigcc', name:'core', version: version
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
 gradlePlugin {
     plugins {
-        ApiggsPlugin {
+        apigccPlugin {
             id = 'com.apigcc'
             implementationClass = 'com.apigcc.ApigccPlugin'
         }
     }
 }
 
-publish {
-    userOrg = "apiggs"
-    groupId = group
-    artifactId = name
-    publishVersion = version
-    desc = project.DESCRIPTION
-    website = project.SITE_URL
-    bintrayUser = BINTRAYUSER
-    bintrayKey = BINTRAYKEY
-    dryRun = false
-}
+pluginBundle {
+    website = 'http://www.apigcc.com'
+    vcsUrl = 'https://github.com/apigcc/apigcc-gradle-plugin'
+    description = 'easy use apigcc with gradle.'
+    tags = ['apigcc', 'api', 'rest', 'doc']
 
-gradle.taskGraph.whenReady { taskGraph ->
-    taskGraph.getAllTasks().find { it.path == ":generatePomFileForMavenPublication" }?.doLast {
-        file("build/publications/maven/pom-default.xml").delete()
-        println 'Overriding pom-file to make sure we can sync to maven central!'
-        pom {
-            //noinspection GroovyAssignabilityCheck
-            project {
-                name "$project.name"
-                artifactId name
-                packaging 'jar'
-                description DESCRIPTION
-                url SITE_URL
-                version version
-
-                scm {
-                    url GIT_URL
-                    connection GIT_URL
-                    developerConnection GIT_URL
-                }
-
-                licenses {
-                    license {
-                        name LICENSE
-                    }
-                }
-
-                developers {
-                    developer {
-                        id DEVELOPER_ID
-                        name DEVELOPER_NAME
-                        email DEVELOPER_EMAIL
-                    }
-                }
-            }
-        }.writeTo("build/publications/maven/pom-default.xml")
+    plugins {
+        apigccPlugin {
+            displayName = 'auto generate rest doc'
+        }
     }
 }

@@ -1,6 +1,6 @@
 package com.github.apiggs;
 
-import com.apigcc.Context;
+import com.apigcc.core.Context;
 import org.gradle.api.Plugin;
 import org.gradle.api.Project;
 
