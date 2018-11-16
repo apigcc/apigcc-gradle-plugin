@@ -1,4 +1,4 @@
-package com.github.apiggs;
+package com.github.apigcc;
 
 import com.apigcc.core.Apigcc;
 import com.apigcc.core.Options;
@@ -14,7 +14,7 @@ import java.nio.file.Paths;
  * 配置项参考
  * {@link Options}
  */
-public class ApiggsTask extends DefaultTask {
+public class ApigccTask extends DefaultTask {
 
     String id;
     String title;
