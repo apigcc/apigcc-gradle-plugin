@@ -1,6 +1,5 @@
-package com.github.apigcc;
+package com.apigcc;
 
-import com.apigcc.core.Context;
 import org.gradle.api.Plugin;
 import org.gradle.api.Project;
 
@@ -11,7 +10,7 @@ public class ApigccPlugin implements Plugin<Project> {
     @Override
     public void apply(Project project) {
         Map<String, Object> attrs = new HashMap<>();
-        attrs.put("name", Context.NAME);
+        attrs.put("name", "apigcc");
         attrs.put("type", ApigccTask.class);
         attrs.put("group", "Documentation");
         project.getTasks().create(attrs);
