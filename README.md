@@ -16,6 +16,8 @@ apply plugin: 'com.github.apiggs'
 
 apiggs{
  // options here
+ id = 'apigcc-gradle-plugin'
+ title='设置的文档标题' 
 }
 
 ```
